@@ -1,4 +1,4 @@
 zeeBar
 ======
 
-utils for zeeBar
+root folder for zeeBar
