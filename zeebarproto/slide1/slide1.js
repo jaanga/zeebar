@@ -1,0 +1,12 @@
+
+	function slide1(id, ht) {
+		var txt = 'Go to <a href="JavaScript:loadScript(\'slide1/slide1World.js\')" >Slide 1 World</a>';
+		var link = 'slide1/slide1World.js';
+		buildCube(30, 1, 30, 0, 0, 0, colors[id],'', ht, id, '.js', link, txt);
+		buildCube(8, 8, 8, 0, 4, 0, 0xffffff, 'textures/' + textureImages[id], ht, id, '.js', link, txt);
+		
+		playback = true;
+		zeeBarCurrent = 1;
+	}
+	
+	callback(screens.indexOf('slide1') + 1);

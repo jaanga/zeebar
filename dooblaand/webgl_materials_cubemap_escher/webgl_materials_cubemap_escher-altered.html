@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>three.js webgl - materials - cube reflection [Escher]</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src="../../../three.js/build/three.min.js"></script>	
+</head>
+
+<body>
+<script>
+
+document.body.style.font = 'bold 12pt monospace';
+document.body.style.margin = '0';
+document.body.style.overflow = 'hidden';
+document.body.style.textAlign = 'center';
+
+		var camera, scene, renderer;
+
+		var mesh, zmesh, lightMesh, geometry;
+
+		var directionalLight, pointLight;
+
+		var mouseX = 0;
+		var mouseY = 0;
+
+		var windowHalfX = window.innerWidth / 2;
+		var windowHalfY = window.innerHeight / 2;
+
+		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+		
+var js = document.createElement('script');
+js.setAttribute('type', 'text/javascript');
+js.setAttribute('src', 'cors.js');
+document.body.appendChild(js);
+
+init();
+
+function init() {
+
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 100000 );
+				camera.position.z = 3200;
+
+				scene = new THREE.Scene();
+
+				//
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+
+				window.addEventListener( 'resize', onWindowResize, false );
+animate();
+
+			}		
+		
+
+
+		function onWindowResize() {
+
+			windowHalfX = window.innerWidth / 2;
+			windowHalfY = window.innerHeight / 2;
+
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+
+			renderer.setSize( window.innerWidth, window.innerHeight );
+
+		}
+
+		function onDocumentMouseMove(event) {
+
+			mouseX = ( event.clientX - windowHalfX );
+			mouseY = ( event.clientY - windowHalfY );
+
+		}
+
+		//
+
+		function animate() {
+
+			requestAnimationFrame( animate );
+
+			render();
+			// if ( statsEnabled ) stats.update();
+
+		}
+
+		function render() {
+
+			camera.position.x += ( mouseX - camera.position.x ) * .05;
+			camera.position.y += ( - mouseY - camera.position.y ) * .05;
+
+			camera.lookAt( scene.position );
+
+			renderer.render( scene, camera );
+
+		}
+
+	</script>
+
+</body>
+</html>

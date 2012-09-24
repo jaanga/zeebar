@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>zeeBar DoobLand</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+<script src="../../three.js/build/three.min.js"></script>
+<script src='../../three.js/examples/fonts/helvetiker_bold.typeface.js'></script>
+
+<script src='../zeebar/device-events.js'> // pointing device </script> 
+<script src="../zeebar/assets.js"> //  </script> 
+
+<script src="file-manifest-doobland.js"> // scripts </script>
+<script src="../file-manage.js"> // scripts </script>
+<script src='../heads-up-zeebar.js'> //  </script> 
+<script>
+    var scene, camera, renderer, projector;
+    var geometry, texture, material, mesh;
+	var clock = new THREE.Clock();
+
+	// var plane, cube;
+	
+	init();
+	animate();
+	// function loop() {}
+
+    function init() {
+        scene = new THREE.Scene();
+	
+		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
+		camera.position.set( -20, 20, -20);
+		controls = new THREE.TrackballControls( camera );
+		
+		scene.add( new THREE.AmbientLight( 0x505050 ) );
+
+		var light = new THREE.SpotLight( 0xffffff, 1.5 );
+		light.position.set( -50, 50, -50 );
+		light.castShadow = true;
+
+		light.shadowCameraNear = 1;
+		light.shadowCameraFar = camera.far;
+		light.shadowCameraFov = 50;
+//light.shadowCameraVisible = true;
+		light.shadowBias = -0.00005; -0.00022;
+		light.shadowDarkness = 0.5;
+
+		light.shadowMapWidth = 2048;
+		light.shadowMapHeight = 2048;
+		scene.add( light );
+		
+		plane = new THREE.CubeGeometry( 30, 30, 0.1 );		
+		cube = new THREE.CubeGeometry( 8, 8, 8 );		
+		
+		projector = new THREE.Projector();
+        renderer = new THREE.WebGLRenderer( {antialias: true } );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+		
+		renderer.shadowMapEnabled = true;
+		renderer.shadowMapSoft = true;		
+				
+        document.body.appendChild( renderer.domElement );		
+    }	
+
+    function animate() {
+        requestAnimationFrame( animate );
+		updateHeadsUp();
+		if (playback) {loop();}
+        render();
+    }
+
+    function render() {
+		controls.update();
+        renderer.render( scene, camera );
+    }
+/*	
+	function onDocumentMouseWheel(e) {
+		// if (e.target.length) {return;}
+// console.log(e);
+		if (e.wheelDelta > 0) {
+			var d = -0.7;
+		} else {
+			var d = 0.7;
+		}
+		for (var i = 0, m; i < zeeCount; i++) {
+			for (var j = 0, l = zeeBar[i].children.length; j < l; j++) {
+				m = zeeBar[i].children[j];
+				m.position.y += d;
+				if (m.position.y >= zeeHalf) {
+					m.position.y = -zeeHalf;
+				} else if ( m.position.y < -zeeHalf) {
+					m.position.y = zeeHalf;
+				}			
+			}
+		}	
+	}
+	
+	function updateHeadsUp() {
+		var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+		projector.unprojectVector( vector, camera );
+		var ray = new THREE.Ray( camera.position, vector.subSelf( camera.position ).normalize() );
+		//if (!ray) {return;}
+		var intersects = ray.intersectObjects( scene.children );
+		// console.log(intersects);
+		if ( intersects.length > 0 ) {	
+		// console.log( Intersected);
+			if ( Intersected != intersects[ 0 ].object ) { // not same object as previous event
+				//if ( Intersected ) { Intersected.material.color.setHex( Intersected.currentHex ); }
+				Intersected = intersects[ 0 ].object;			
+				//Intersected.currentHex = Intersected.material.color.getHex();					
+				if ( Intersected.headsup != undefined && Intersected.headsup != '') {
+					//Intersected.material.color.setHex( 0xff0000 );
+					var txt = Intersected.headsup;
+					headsUp.style.left = 10 + 0.5 * window.innerWidth + mouse.x * 0.5 * window.innerWidth + 'px';
+					headsUp.style.bottom = 10 + 0.5 * window.innerHeight + mouse.y * 0.5 * window.innerHeight+ 'px';
+					headsUp.style.display = 'block';
+					headsUp.innerHTML = txt;
+				}				
+			}
+		} else {
+			if ( Intersected ) {
+				highlightOff(Intersected);
+// console.log('h off');
+			}
+			Intersected = null;
+		}
+	}	
+
+	function highlightOff(obj) {
+		// obj.material.color.setHex( obj.currentHex );
+		headsUp.style.display = 'none';
+	}
+	
+	function onDocumentMouseMove( event ) {
+		mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+		mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+		mouseMove = true;
+	}	
+	
+	function onDocumentMouseDown( event ) {
+// if (window.console) { console.log(event, Intersected); }	
+		if ( event.target.tagName != 'A' ) {  // if not an anchor...
+		 headsUp.style.display = 'none';
+		 if (playback) {playback = false; } else { playback = true; }
+		}
+		if (Intersected) {
+			var i = Intersected.zeeBarID;
+			if (i > 0) {
+				var txt = screens[i];
+				getWorld( txt + '/' + txt + 'World.js');
+			}  else {
+				window.location.replace("../zeebar.html")
+			}
+		}
+	}	
+*/	
+</script>
+</body>
+</html>
