@@ -56,6 +56,9 @@
         camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
         camera.position.set(-5, 12, 11);
 		controls = new THREE.TrackballControls( camera );
+		controls.zoomSpeed = 0.05;
+		controls.maxDistance = 20;
+		
         scene.add( camera );
 
 		loader = new THREE.JSONLoader();
@@ -83,7 +86,7 @@
     function animate() {
         requestAnimationFrame( animate );
 		
-		theta += 0.01;
+		theta += 0.015;
 		mesh.rotation.y = -theta;
 		mesh.position.x = rad * Math.cos(theta);
 		mesh.position.z = rad * Math.sin(theta);

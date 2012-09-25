@@ -51,8 +51,10 @@
 		if (playback) {playback = false; } else { playback = true; }
 		
 		if (intersected) {
-			var i = intersected.zeeBarID, t = intersected.zeeBarType, l = intersected.zeeBarLink  ;
-			if (t == '.html') {
+			var i = intersected.zeeBarID, t = intersected.zeeBarType, l = intersected.zeeBarLink ;
+			if (t == 'link') {
+				window.location = intersected.zeeBarLink;
+			} else if (t == '.html') {
 				window.location = screens[ i - 1 ] + '/' + screens[ i - 1 ] + t;
 			} else if (t == '.js') {
 				if (intersected.zeeBarLink) { loadScript( intersected.zeeBarLink ); }

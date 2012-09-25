@@ -8,10 +8,10 @@
 	var zeeBottom = (zeeCount - 1) * -zeeTop;
 	var zeeZero = 1;
 	
-	loadScript('../../zeebar/zeebarroot.js');
+	loadScript('../zeebar/zeebarroot.js');
 
 	function callbackRoot() {
-		zeebarroot('../zeebar.html', 10, 2, 30);
+		zeebarroot('../index.html', 10, 2, 30);
 	}
 	
 	function loadUp() {	
