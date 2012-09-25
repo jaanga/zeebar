@@ -7,11 +7,11 @@
 	initDeviceEvents();
 	
 	function initDeviceEvents() {
-		document.addEventListener( 'DOMMouseScroll', onDocumentMouseWheel, false);
-		document.addEventListener( 'mousewheel', onDocumentMouseWheel, false);
+		//document.addEventListener( 'DOMMouseScroll', onDocumentMouseWheel, false);
+		//document.addEventListener( 'mousewheel', onDocumentMouseWheel, false);
 		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-		document.addEventListener( 'mousedown', onDocumentMouseDown, false ); // or mousedown?	
-		// document.addEventListener( 'click', onDocumentMouseClick, false ); // or mousedown?	
+		document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+		// document.addEventListener( 'click', onDocumentMouseClick, false );
 		document.addEventListener( 'keydown', onKeyDown, false );
 		
 		headsUp = document.createElement( 'div' );
@@ -42,7 +42,6 @@
 	
 	function onDocumentMouseDown( event ) {
 // console.log(event);
-	
 		if ( event.target.tagName != 'A' ) {  // if not an anchor...
 			mouseClick(event);
 		}
