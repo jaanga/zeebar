@@ -26,7 +26,8 @@
 	}
 
 	
-	function onDocumentMouseWheel(event) {	
+	function onDocumentMouseWheel(event) {
+		event.preventDefault();
 		if ( !event.srcElement.data) {
 
 			wheelDelta( event.wheelDelta * -0.08 );
