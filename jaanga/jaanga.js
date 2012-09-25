@@ -1,6 +1,6 @@
 
 function jaanga(id, ht) {
-	var txt = '<h1>Click anywhere here to go to:</h1><h1><a href="../2012-07-16-jaanga-gas/gas-query-visualization-sp500-replay.html" >jaanga</a></h1><h1>3D Animated Real-time DataViz</h1>';
+	var txt = '<h1>Jaanga weB3D R4</h1><h1>3D Animated Real-time DataViz</h1><h1>Coming here soon...</h1>';
 	var link = '';
 	buildCube(30, 1, 30, 0, 0 , 0, colors[id],'', ht, id, 'jaanga', link, txt);
 	// buildCube(8, 8, 8, 0, ht + 4, 0, 0xffffff, 'textures/' + textureImages[id], id, 'jaanga', txt);
