@@ -10,7 +10,8 @@
 		document.addEventListener( 'DOMMouseScroll', onDocumentMouseWheel, false);
 		document.addEventListener( 'mousewheel', onDocumentMouseWheel, false);
 		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-		document.addEventListener( 'click', onDocumentMouseClick, false ); // or mousedown?	
+		document.addEventListener( 'mousedown', onDocumentMouseDown, false ); // or mousedown?	
+		// document.addEventListener( 'click', onDocumentMouseClick, false ); // or mousedown?	
 		document.addEventListener( 'keydown', onKeyDown, false );
 		
 		headsUp = document.createElement( 'div' );
@@ -25,9 +26,10 @@
 	}
 
 	
-	function onDocumentMouseWheel(e) {	
-		if ( !e.srcElement.data) {
-			wheelDelta( e.wheelDelta * -0.08 );
+	function onDocumentMouseWheel(event) {	
+		if ( !event.srcElement.data) {
+
+			wheelDelta( event.wheelDelta * -0.08 );
 		}	
 	}	
 	
@@ -37,9 +39,11 @@
 		mouseMove = true;
 	}	
 	
-	function onDocumentMouseClick( event ) {
+	function onDocumentMouseDown( event ) {
+// console.log(event);
+	
 		if ( event.target.tagName != 'A' ) {  // if not an anchor...
-			mouseClick();
+			mouseClick(event);
 		}
 	}	
 	

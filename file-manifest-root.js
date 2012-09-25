@@ -9,7 +9,7 @@
 	var zeeTop = 40;
 	var zeeBottom = (zeeCount - 1) * -zeeTop;
 	
-	loadScript('../zeebar/zeebarroot.js');
+	loadScript('zeebar/zeebarroot.js');
 	
 	function callbackRoot() {
 		zeebarroot('', 10, 2, 30);

@@ -46,7 +46,7 @@
 		if ( intersected && intersected.zeeBarType == 'game') {intersected.scale.x = 1;}
 	}
 	
-	function mouseClick() {
+	function mouseClick(event) {
 		highlightOff();
 		if (playback) {playback = false; } else { playback = true; }
 		
@@ -57,9 +57,10 @@
 			} else if (t == '.js') {
 				if (intersected.zeeBarLink) { loadScript( intersected.zeeBarLink ); }
 			} else if (t == 'root') {
-				window.location =  '../zeebar.html';
+				window.location =  '../index.html';
 			} else if (t == 'goBack') {
 				goBack(1);
+				playback = true;
 			} else if (t == 'jaanga') {
 				window.location =  '../2012-07-16-jaanga-gas/gas-query-visualization-sp500-replay.html';
 			} else if (t == 'slide') {
@@ -72,12 +73,17 @@
 				zeeBarCurrent++;
 				if (zeeBarCurrent > zeeCount) { zeeBarCurrent = 1;}
 				goBack(zeeBarCurrent);
+				playback = true;	
 			} else if (t == 'previous') {
 				zeeBarCurrent--;
 				if (zeeBarCurrent < 1) { zeeBarCurrent = zeeCount;}			
 				goBack(zeeBarCurrent);
+				playback = true;	
 				//wheelDelta(zeeBottom);
 			}
+		} else {
+// console.log('hi', event);		
+
 		}
 	}
 	
@@ -137,7 +143,7 @@
 
 	function loopDefault() {
 		for (var i = 1, l = zeeCount; i <= l; i++) {
-			if ( Math.abs(zeeBar[i].children[0].position.y) < zeeTop) {
+			if ( Math.abs(zeeBar[i].children[0].position.y) - 5 < zeeTop) {
 				var object = zeeBar[i].children; 
 				break;
 			}
