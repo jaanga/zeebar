@@ -21,23 +21,23 @@
 <script src='heads-up-zeebar.js'> //  </script> 
 <script src='file-manifest-root.js'> // scripts </script>
 <script>
-    var scene, camera, light, projector, renderer;
-    var geometry, texture, material, mesh;
+	var scene, camera, light, projector, renderer;
+	var geometry, texture, material, mesh;
 	var clock = new THREE.Clock();
 	
 	init();
 	animate();
 	
     function init() {
-        scene = new THREE.Scene();
-	
+		scene = new THREE.Scene();
+
 		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
 		camera.position.set( 20, 20, -20);
 		controls = new THREE.TrackballControls( camera );
 		controls.noZoom = true;
 		controls.zoomSpeed = 0.05;
-		controls.maxDistance = 800;
-		
+		controls.maxDistance = 800
+
 		scene.add( new THREE.AmbientLight( 0x505050 ) );
 
 		var light = new THREE.SpotLight( 0xffffff, 1.5 );
@@ -53,15 +53,15 @@
 		light.shadowMapWidth = 2048;
 		light.shadowMapHeight = 2048;
 		scene.add( light );		
-		
+
 		projector = new THREE.Projector();
-		
-        renderer = new THREE.WebGLRenderer( {antialias: true } );
-        renderer.setSize( window.innerWidth, window.innerHeight );
+
+		renderer = new THREE.WebGLRenderer( {antialias: true } );
+		renderer.setSize( window.innerWidth, window.innerHeight );
 		renderer.shadowMapEnabled = true;
 		renderer.shadowMapSoft = true;		
-        document.body.appendChild( renderer.domElement );
-		
+		document.body.appendChild( renderer.domElement );
+
 		//	Three.js bits
 		stats = new Stats();
 		document.body.appendChild(stats.domElement);
@@ -71,19 +71,19 @@
 		stats.domElement.style.zIndex = 100;	
 
 		if (window.console) { console.log( 'load time: ', new Date - timeStart); }
-	}	
+	}
 
-    function animate() {
-        requestAnimationFrame( animate );
+	function animate() {
+		requestAnimationFrame( animate );
 		render();
 		stats.update();
-	}	
-		
+	}
+
 	function render() {	
 		controls.update();
-		updateHeadsUp();  // see device-events.js
-        renderer.render( scene, camera );
-    }
+		updateHeadsUp();  // see device-events.js\
+		renderer.render( scene, camera );
+	}
 </script>
 </body>
 </html>
