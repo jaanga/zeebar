@@ -35,8 +35,9 @@
 		camera.position.set( 20, 20, -20);
 		controls = new THREE.TrackballControls( camera );
 		controls.noZoom = true;
-		controls.zoomSpeed = 0.05;
-		controls.maxDistance = 800
+		//controls.zoomSpeed = 0.05;
+		controls.minDistance = 5;
+		controls.maxDistance = 80;
 
 		scene.add( new THREE.AmbientLight( 0x505050 ) );
 
