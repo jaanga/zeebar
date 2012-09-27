@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>zeeBar Root</title>
+<title>zeeBar Home</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
@@ -15,84 +15,57 @@
 <script src='../three.js/examples/js/Stats.js'></script>
 <script src='../three.js/examples/fonts/helvetiker_bold.typeface.js'></script>
 -->
-<script src='zeebar/assets.js'> //  </script> 
-<script src='zeebar/device-events.js'> // pointing device </script> 
+<script src='zeebar/assets.js'></script> 
+<script src='zeebar/device-events.js'></script> 
 
-<script src='heads-up-zeebar.js'> //  </script> 
-<script src='file-manifest-root.js'> // scripts </script>
+<script src='heads-up-zeebar.js'></script> 
+<script src='file-manifest-root.js'></script>
 <script>
-	var scene, camera, light, projector, renderer;
-	var geometry, texture, material, mesh;
-	var clock = new THREE.Clock();
+	var renderer, scene, camera, light, projector,
+		geometry, material, mesh,
+		clock = new THREE.Clock();
 	
 	init();
 	animate();
 	
     function init() {
-		container = document.createElement( 'div' );
-		document.body.appendChild( container );
-		
 		renderer = new THREE.WebGLRenderer( {antialias: true } );
 		renderer.setSize( window.innerWidth, window.innerHeight );
 		renderer.shadowMapEnabled = true;
 		renderer.shadowMapSoft = true;		
-		container.appendChild( renderer.domElement );
+		document.body.appendChild( renderer.domElement );
 		
 		scene = new THREE.Scene();
 
 		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
 		camera.position.set( 20, 20, -20);
-		controls = new THREE.TrackballControls( camera, renderer.domElement );
-				controls.rotateSpeed = 1.0;
-				controls.zoomSpeed = 1.2;
-				controls.panSpeed = 0.2;
-
-				controls.noZoom = false;
-				controls.noPan = false;
-
-				controls.staticMoving = false;
-				controls.dynamicDampingFactor = 0.3;
-
-				//controls.minDistance = radius * 1.1;
-				//controls.maxDistance = radius * 100;
-		//controls.noZoom = true;
-		//controls.zoomSpeed = 0.05;
-		controls.minDistance = 5;
-		controls.maxDistance = 80;
-
+		
+		controls = new THREE.TrackballControls( camera);
+		controls.noZoom = true;
+		
 		scene.add( new THREE.AmbientLight( 0x505050 ) );
 
-		var light = new THREE.SpotLight( 0xffffff, 1.5 );
+		light = new THREE.SpotLight( 0xffffff, 1.5 );
 		light.position.set( -50, 50, -50 );
 		light.castShadow = true;
 
 		light.shadowCameraNear = 1;
 		light.shadowCameraFar = camera.far;
 		light.shadowCameraFov = 50;
-//light.shadowCameraVisible = true;
-		light.shadowBias = -0.00005; -0.00022;
+		light.shadowBias = -0.00005;
 		light.shadowDarkness = 0.5;
 		light.shadowMapWidth = 2048;
 		light.shadowMapHeight = 2048;
 		scene.add( light );		
 
 		projector = new THREE.Projector();
-/*
-		renderer = new THREE.WebGLRenderer( {antialias: true } );
-		renderer.setSize( window.innerWidth, window.innerHeight );
-		renderer.shadowMapEnabled = true;
-		renderer.shadowMapSoft = true;		
-		document.body.appendChild( renderer.domElement );
-*/
 
 		stats = new Stats();
-		container.appendChild(stats.domElement);
+		document.body.appendChild(stats.domElement);
 		stats.domElement.style.position = 'absolute';
 		stats.domElement.style.top = '0px';
 		stats.domElement.style.right = '20px';
 		stats.domElement.style.zIndex = 100;	
-
-		if (window.console) { console.log( 'load time: ', new Date - timeStart); }
 	}
 
 	function animate() {
@@ -103,7 +76,7 @@
 
 	function render() {	
 		controls.update();
-		updateHeadsUp();  // see device-events.js\
+		updateHeadsUp();  // see device-events.js
 		renderer.render( scene, camera );
 	}
 </script>

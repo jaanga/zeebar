@@ -3,10 +3,21 @@
 	document.body.style.margin = '0';
 	document.body.style.overflow = 'hidden';
 	
-	//document.body.style.textAlign = 'center';
-	
 	var zeeBar = [];
 	
+	var headsUp = document.createElement( 'div' );
+	document.body.appendChild( headsUp );
+	headsUp.style.backgroundColor = '#ddd';
+	headsUp.style.borderRadius = '8px';
+	headsUp.style.padding = '5px 5px 10px 5px';
+	headsUp.style.opacity = '0.85';
+	headsUp.style.position = 'absolute';
+	headsUp.style.left = '500px';
+	headsUp.style.textAlign = 'left';
+	
+	// var container;
+	//container = document.createElement( 'div' );
+	//document.body.appendChild( container );
 	
 	function loadScript(fname) {
 		var js = document.createElement('script');
@@ -115,7 +126,6 @@
 		context.fillRect( 0, 0, width, height );
 		//context.lineWidth = 5;
 		//context.strokeRect(0, 0, width, height);	
-
 		if (color) { context.fillStyle = color; } else { context.fillStyle = '#000000'; } 
 		context.globalAlpha = 0.8;
 		if (shadowColor) {context.shadowColor = shadowColor; }
@@ -127,7 +137,7 @@
 		var map = new THREE.Texture( canvas );
 		map.needsUpdate = true;
 		return new THREE.MeshBasicMaterial( { map: map, transparent: true } );
-	}	
+	}
 	
 	function createTextTransparent(text, width, height, points, color ) {
 		var canvas = document.createElement("canvas");
