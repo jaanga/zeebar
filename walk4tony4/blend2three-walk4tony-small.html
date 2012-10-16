@@ -4,7 +4,8 @@
 <title>Walker 4 Tony</title>
 <meta charset="utf-8">
 <script src="http://mrdoob.github.com/three.js/build/three.min.js"></script>
-<script src="http://mrdoob.github.com/three.js/examples/js/Stats.js"></script>
+<script src="http://mrdoob.github.com/three.js/examples/js/controls/TrackballControls.js"></script>
+<script src="http://mrdoob.github.com/three.js/examples/js/libs/stats.min.js"></script>
 <script src="http://mrdoob.github.com/three.js/examples/js/Detector.js"></script>
 </head>
 <body>
@@ -78,8 +79,10 @@
 		document.body.appendChild( renderer.domElement );
 		// renderer.autoClear = true;
     }
+	
 	var theta = 0;
 	var rad = 9;
+	
     function animate() {
         requestAnimationFrame( animate );
 		
