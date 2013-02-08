@@ -97,7 +97,7 @@
 	function addText (text, siz, thick, ht, x, y, z, col, bevEnabled, bevThick, bevSize, txt, id, type) {	
 		if (!id) {id = 0;}
 		if (!type) {type = '';}
-		material = new THREE.MeshPhongMaterial( { color: col, ambient: col, shading: THREE.SmoothShading } );
+		material = new THREE.MeshPhongMaterial( { color: col, ambient: col, shading: THREE.SmoothShading, side: THREE.DoubleSide, transparent: true } );
 		geometry = new THREE.TextGeometry( text, {
 			size: siz,
 			height: thick,

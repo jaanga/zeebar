@@ -4,13 +4,13 @@ function jaanga(id, ht) {
 	var link = '';
 	buildCube(30, 1, 30, 0, 0 , 0, colors[id],'', ht, id, 'jaanga', link, txt);
 	// buildCube(8, 8, 8, 0, ht + 4, 0, 0xffffff, 'textures/' + textureImages[id], id, 'jaanga', txt);
-	
+	/*
 	addText ('S&P500', 5, 5, 3, 0, 0, 0, 0xaa8888, true, 0.2, 0.2, txt, id, 'jaanga');
 	mesh.position.set( 12, ht + 6, 4);
 	// mesh.zeeBarHeight = 15;
 	mesh.scale.y = 3;
 	mesh.rotation.y = 3.1415;
-	
+	*/
 	geometry = new THREE.CylinderGeometry( 20, 30, 20, 35, 1, true );
 	material = createText('jaanga', 24, 300 ); 
 	mesh = new THREE.Mesh( geometry, material);
