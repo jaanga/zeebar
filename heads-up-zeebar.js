@@ -5,7 +5,7 @@
 	function updateHeadsUp() {
 		var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
 		projector.unprojectVector( vector, camera );
-		var ray = new THREE.Ray( camera.position, vector.subSelf( camera.position ).normalize() );
+		var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 		var intersects = ray.intersectObjects( scene.children );
 		if ( intersects.length > 0 ) {	
 		
