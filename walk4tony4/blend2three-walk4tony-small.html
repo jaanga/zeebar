@@ -3,17 +3,17 @@
 <head>
 <title>Walker 4 Tony</title>
 <meta charset="utf-8">
-<script src="http://mrdoob.github.com/three.js/build/three.min.js"></script>
-<script src="http://mrdoob.github.com/three.js/examples/js/controls/TrackballControls.js"></script>
-<script src="http://mrdoob.github.com/three.js/examples/js/libs/stats.min.js"></script>
-<script src="http://mrdoob.github.com/three.js/examples/js/Detector.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r55/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r55/examples/js/controls/TrackballControls.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r55/examples/js/libs/stats.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r55/examples/js/Detector.js"></script>
 </head>
 <body>
 <script>
 	document.body.style.margin = '0';
 	document.body.style.overflow = 'hidden';
 	document.body.style.textAlign = 'center';
-	
+
 	info = document.createElement( 'div' );
 	var s = '';
 	for (var i = 0; i < 5 ; i++ ) {
@@ -32,7 +32,7 @@
 	var clock = new THREE.Clock();
 
     init();
-    
+
 	function callBack(geometry) {
 		material = geometry.materials[ 0 ];
 		material.morphTargets = true;
@@ -40,16 +40,16 @@
 		mesh = new THREE.MorphAnimMesh( geometry, material  );
 		mesh.duration = 1500;
 		scene.add( mesh );
-		
+
 		material = new THREE.MeshBasicMaterial( { color: 0x444444, opacity: 0.8, morphTargets: true } );
 		material.shading = THREE.FlatShading;
 		mesh2 = new THREE.MorphAnimMesh( geometry, material  );
 		mesh2.scale.set(1, 0.001, 1.5);
 		mesh2.duration = 1500;
-		scene.add( mesh2 );		
-		
+		scene.add( mesh2 );
+
 		animate();
-	}		
+	}
 
     function init() {
         scene = new THREE.Scene();
@@ -66,26 +66,26 @@
 		stats.domElement.style.position = 'absolute';
 		stats.domElement.style.top = '0px';
 		stats.domElement.style.zIndex = 100;
-		document.body.appendChild( stats.domElement )		
+		document.body.appendChild( stats.domElement )
 
 		scene.add( new THREE.AmbientLight( 0xffffff ) );
-		
+
 		pointLight = new THREE.PointLight( 0xff4400, 5, 30 );
 		pointLight.position.set( -3, 8, 3 );
 		scene.add( pointLight );
-		
+
 		renderer = new THREE.WebGLRenderer({ antialias: true});
 		renderer.setSize( window.innerWidth, window.innerHeight );
 		document.body.appendChild( renderer.domElement );
 		// renderer.autoClear = true;
     }
-	
+
 	var theta = 0;
 	var rad = 9;
-	
+
     function animate() {
         requestAnimationFrame( animate );
-		
+
 		theta += 0.02;
 		mesh.rotation.y = -theta;
 		mesh.position.x = rad * Math.cos(theta);
@@ -93,15 +93,15 @@
 		mesh2.rotation.y = -theta;
 		mesh2.position.x = rad * Math.cos(theta);
 		mesh2.position.z = rad * Math.sin(theta);
-		
+
 		var delta = clock.getDelta();
 		mesh.updateAnimation( 1000 * delta );
-		mesh2.updateAnimation( 1000 * delta );		
+		mesh2.updateAnimation( 1000 * delta );
         render();
 		stats.update();
     }
 
-    function render() {		
+    function render() {
 		controls.update( clock.getDelta() );
         renderer.render( scene, camera );
     }
