@@ -15,4 +15,4 @@ GitHub Source: <https://github.com/jaanga/zeebar>
 
 [singlefile.html]( http://jaanga.github.io/zeebar/singlefile/singlefile.html )
 
-[doobland.html]( http://jaanga.github.io/zeebar/doobland/doobland.html )
+[dooblaand.html]( http://jaanga.github.io/zeebar/dooblaand/dooblaand.html )
